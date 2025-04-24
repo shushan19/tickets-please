@@ -30,7 +30,8 @@ class UserResource extends JsonResource
 //                'emailVerifiedAt' => $this->when($request->routeIs('users.*'),$this->email_verified_at),
 //                'createdAt' => $this->when($request->routeIs('users.*'),$this->created_at),
 //                'updatedAt' => $this->when($request->routeIs('users.*'),$this->updated_at),
-            ]
+            ],
+            'includes'=> TicketResource::collection($this->whenLoaded('tickets'))
         ];
     }
 }

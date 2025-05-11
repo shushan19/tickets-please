@@ -16,14 +16,9 @@ class TicketController extends ApiController
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(TicketFilter $filters)
     {
-        if($this->include('author'))
-        {
-            return TicketResource::collection(Ticket::with('user')->paginate());
-        }
-
-        return TicketResource::collection(Ticket::paginate());
+        return TicketResource::collection(Ticket::filter($filters)->paginate());
     }
 
 
